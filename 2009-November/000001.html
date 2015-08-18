@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] seg fault in timeevoltemp
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20seg%20fault%20in%20timeevoltemp&In-Reply-To=%3C1259151511.16817.14.camel%40muick.geos.ed.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000000.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] seg fault in timeevoltemp</H1>
+    <B>Magnus Hagdorn</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20seg%20fault%20in%20timeevoltemp&In-Reply-To=%3C1259151511.16817.14.camel%40muick.geos.ed.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] seg fault in timeevoltemp">Magnus.Hagdorn at ed.ac.uk
+       </A><BR>
+    <I>Wed Nov 25 13:18:31 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000000.html">[Glimmer-cism-user] seg fault in timeevoltemp
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+On Wed, 2009-11-25 at 11:38 +0000, Sarah Shannon wrote:
+&gt;<i> I was wondering if anyone would have advice on a problem I have with 
+</I>&gt;<i> glimmer-cism. 
+</I>&gt;<i> 
+</I>&gt;<i> I am using the lanl version from 
+</I>&gt;<i> <A HREF="http://svn.berlios.de/svnroot/repos/glimmer-cism/glimmer-cism/glimmer/branches/lanl/">http://svn.berlios.de/svnroot/repos/glimmer-cism/glimmer-cism/glimmer/branches/lanl/</A>
+</I>&gt;<i> 
+</I>&gt;<i> The problem is this: When I run the model on a 20km resolution 
+</I>&gt;<i> everything works fine, however, when I run the model on a 5km
+</I>&gt;<i> resolution 
+</I>&gt;<i> I get an segmentation fault caused by the subroutine
+</I>&gt;<i> 
+</I>
+Hi Sarah,
+what compiler are you using? 
+
+You could enable debugging info by adding FCFLAGS=&quot;-C -g&quot; to the end of
+your configure command. You will need to do a make clean &amp;&amp; make
+afterwards to recompile everything. That way you can figure out where it
+breaks. Also the code you are using is slightly out-of-date. The new
+place is
+<A HREF="http://svn.berlios.de/svnroot/repos/glimmer-cism/glimmer-cism-lanl/trunk/">http://svn.berlios.de/svnroot/repos/glimmer-cism/glimmer-cism-lanl/trunk/</A>
+your problem might be fixed there.
+
+Regards
+magi
+
+
+-- 
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000000.html">[Glimmer-cism-user] seg fault in timeevoltemp
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

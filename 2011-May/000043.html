@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] [Glimmer-cism-devel] restarts and batch jobs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20%5BGlimmer-cism-devel%5D%20restarts%20and%20batch%20jobs&In-Reply-To=%3CA67CCB1D-DE8A-4CCD-9A60-72BC68846D80%40swansea.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000044.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] [Glimmer-cism-devel] restarts and batch jobs</H1>
+    <B>Ian Rutt</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20%5BGlimmer-cism-devel%5D%20restarts%20and%20batch%20jobs&In-Reply-To=%3CA67CCB1D-DE8A-4CCD-9A60-72BC68846D80%40swansea.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] [Glimmer-cism-devel] restarts and batch jobs">I.C.Rutt at swansea.ac.uk
+       </A><BR>
+    <I>Tue May  3 23:12:49 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000044.html">[Glimmer-cism-user] Topography problem in glint example!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Flo,
+
+I would think that's a sensible strategy. It will depend on how you're  
+running Glimmer-CISM, though, and especially if the model is coupled  
+to a climate model of some kind which has its own restart strategy.  
+I've not used the restarts in Glimmer-CISM for a long time, but my  
+recollection is that as well as building the model with restarts  
+enabled, you have to manually call a 'write restart' subroutine  
+whenever you want a restart to be written. I would also recommend  
+doing a test of the restart mechanism to ensure it does give bit-for- 
+bit accuracy (i.e. no difference between output when a given  
+integration has been restarted at some point in the middle compared to  
+when it hasn't).
+
+Hope that makes sense.
+
+Cheers,
+
+Ian
+
+Dr Ian Rutt
+Department of Geography
+College of Science
+Swansea University
+Singleton Park
+Swansea
+SA2 8PP
+Tel. (01792) 602685
+<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">i.c.rutt at swansea.ac.uk</A>
+
+On 27 Apr 2011, at 17:52, Florence Colleoni wrote:
+
+&gt;<i> Dear all,
+</I>&gt;<i>
+</I>&gt;<i> I would like to submit CISM with a batch job on a standard  
+</I>&gt;<i> supercomputing plateform.
+</I>&gt;<i> Should I enable restarts since of course the simulation time exceed  
+</I>&gt;<i> all the max walltimes of the
+</I>&gt;<i> queues on which I am running?
+</I>&gt;<i>
+</I>&gt;<i> Flo
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> &quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la  
+</I>&gt;<i> R&#233;volution avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres  
+</I>&gt;<i> veulent la R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+</I>&gt;<i> Chateaubriand
+</I>&gt;<i> ......................................................................
+</I>&gt;<i> Florence Colleoni
+</I>&gt;<i> CMCC
+</I>&gt;<i> Viale Aldo Moro, 44
+</I>&gt;<i> 40127 Bologna - Italy
+</I>&gt;<i>
+</I>&gt;<i>      Phone: +39 051 3782622
+</I>&gt;<i>      Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+</I>&gt;<i>      URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+</I>&gt;<i> ......................................................................
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Glimmer-cism-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-devel">https://lists.berlios.de/mailman/listinfo/glimmer-cism-devel</A>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110503/b1389b97/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110503/b1389b97/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000044.html">[Glimmer-cism-user] Topography problem in glint example!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

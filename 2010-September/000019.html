@@ -1,0 +1,721 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] compile GLIMMER on ubuntu
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20compile%20GLIMMER%20on%20ubuntu&In-Reply-To=%3CC8C61E38.44E5%25evanskj%40ornl.gov%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000018.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] compile GLIMMER on ubuntu</H1>
+    <B>Evans, Kate J.</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20compile%20GLIMMER%20on%20ubuntu&In-Reply-To=%3CC8C61E38.44E5%25evanskj%40ornl.gov%3E"
+       TITLE="[Glimmer-cism-user] compile GLIMMER on ubuntu">evanskj at ornl.gov
+       </A><BR>
+    <I>Mon Sep 27 16:11:04 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000018.html">[Glimmer-cism-user] compile GLIMMER on ubuntu
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Lele-
+
+The configure is not  finding your netcdf library /usr. What about /usr/local? Check the path /usr and see if libnetcdf.a is there to verify.
+You can also check the Synaptic package manager output to see where it puts the library.
+
+Kate
+
+
+On 9/27/10 9:27 AM, &quot;&#33298;&#20048;&#20048;&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">lele.shu at gmail.com</A>&gt; wrote:
+
+Hello, every one.
+I met some problem when compiling GLIMMER on ubuntu. The situation is below:
+
+1 OS: ubuntu-64
+2 netcdf has been installed with ubuntu Synaptic Package Manager, which includes netcdf-bin, libnetcdf-dev, pyhont-netcdf.
+3 The compiler g++,gcc,Gfortran, python have been installed.
+4 autoconf &amp; automake also are installed.
+
+I compiled GLIMMER following these steps.
+1  ./configure --with-netcdf=/usr FC=gfortran
+
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking for ranlib... ranlib
+checking for Fortran compiler default output file name... a.out
+checking whether the Fortran compiler works... yes
+checking whether we are cross compiling... no
+checking for suffix of executables...
+checking for suffix of object files... o
+checking whether we are using the GNU Fortran compiler... yes
+checking whether gfortran accepts -g... yes
+checking for g77... no
+checking for xlf... no
+checking for f77... f77
+checking whether we are using the GNU Fortran 77 compiler... yes
+checking whether f77 accepts -g... yes
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for Fortran flag to compile .f90 files... none
+checking which fortran compiler... gfortran
+checking for a Python interpreter with version &gt;= 2.3... python
+checking for python... /usr/bin/python
+checking for python version... 2.6
+checking for python platform... linux2
+checking for python script directory... ${prefix}/lib/python2.6/site-packages
+checking for python extension module directory... ${exec_prefix}/lib/python2.6/site-packages
+netCDF location: /usr
+checking for NF_INQ_LIBVERS in -lnetcdf... no
+checking for f90 netCDF interface... yes
+checking whether profilng is enabled... no
+checking whether command-line arguments are enabled... no
+checking whether extended restarts are enabled... no
+checking whether the build is single precision... no
+checking whether we should run the tests... no
+checking for ./src/fortran/CVS/Entries... no
+configure: creating . ./configure --with-netcdf=/usr FC=gfortran /config.status
+config.status: creating Makefile
+config.status: creating m4macros/Makefile
+config.status: creating src/Makefile
+config.status: creating src/python/Makefile
+config.status: creating src/fortran/Makefile
+config.status: creating src/fortran/SLAP_library/Makefile
+config.status: creating tests/Makefile
+config.status: creating glimmer-config
+config.status: creating src/fortran/glimmer_version.F90.in &lt;<A HREF="http://glimmer_version.f90.in/">http://glimmer_version.f90.in/</A>&gt;
+config.status: creating config.inc
+config.status: config.inc is unchanged
+
+
+then
+
+2 make
+make  all-recursive
+make[1]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14'
+Making all in m4macros
+make[2]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/m4macros'
+make[2]: Nothing to be done for `all'.
+make[2]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/m4macros'
+Making all in src
+make[2]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src'
+Making all in python
+make[3]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src/python'
+make[3]: Nothing to be done for `all'.
+make[3]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src/python'
+Making all in fortran
+make[3]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+make  all-recursive
+make[4]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+Making all in SLAP_library
+make[5]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran/SLAP_library'
+make[5]: Nothing to be done for `all'.
+make[5]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran/SLAP_library'
+make[5]: Entering directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+gfortran  -I/usr/include  -L/usr/lib -o simple_glide simple_glide.o libclimate.a libglide.a libglimmer.a SLAP_library/libslap.a
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_avg_reset':
+glide_io.F90:(.text+0x49c7): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x4a8b): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x4b4f): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x4c13): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_avg_accumulate':
+glide_io.F90:(.text+0x4d3b): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+libglide.a(glide_io.o):glide_io.F90:(.text+0x4f71): more undefined references to `__netcdf_MOD_nf90_inq_varid' follow
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_checkdim':
+glide_io.F90:(.text+0x5634): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5671): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glide_io.F90:(.text+0x5804): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5841): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glide_io.F90:(.text+0x59da): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5a17): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glide_io.F90:(.text+0x5bba): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5bf7): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glide_io.F90:(.text+0x5d85): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5dc2): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glide_io.F90:(.text+0x5f67): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x5fa4): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_read':
+glide_io.F90:(.text+0x6183): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x62e6): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x6330): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x6493): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x6665): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x67ce): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x6992): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x6c51): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x6e72): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x6fdb): undefined reference to `__netcdf_MOD_nf90_get_var_2d_fourbytereal'
+glide_io.F90:(.text+0x7025): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x719c): undefined reference to `__netcdf_MOD_nf90_get_var_3d_eightbytereal'
+glide_io.F90:(.text+0x71e6): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x734f): undefined reference to `__netcdf_MOD_nf90_get_var_2d_fourbytereal'
+glide_io.F90:(.text+0x7399): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x7502): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x76c6): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x782f): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x7a01): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x7c94): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x7cf3): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x7e5c): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x8020): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x8189): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x834d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x84b6): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x8688): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x87f1): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+glide_io.F90:(.text+0x89b5): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x8b1e): undefined reference to `__netcdf_MOD_nf90_get_var_2d_eightbytereal'
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_write':
+glide_io.F90:(.text+0x8dca): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x90e3): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x9141): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x9476): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x94d4): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x9618): undefined reference to `__netcdf_MOD_nf90_put_var_2d_fourbytereal'
+glide_io.F90:(.text+0x9662): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x97a6): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x97f0): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x9b05): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x9b63): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x9e94): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x9ef2): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xa13c): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xa186): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xa49b): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xa4f9): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xa808): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xa866): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xab7b): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xabd9): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xaeee): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xaf4c): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xb261): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xb2bf): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xb3fa): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_io.F90:(.text+0xb444): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xb7d0): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xb849): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xb980): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_io.F90:(.text+0xb9ca): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xbb01): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_io.F90:(.text+0xbb4b): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xbc8f): undefined reference to `__netcdf_MOD_nf90_put_var_2d_fourbytereal'
+glide_io.F90:(.text+0xbcd9): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xbe2b): undefined reference to `__netcdf_MOD_nf90_put_var_3d_eightbytereal'
+glide_io.F90:(.text+0xbe75): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xbfb9): undefined reference to `__netcdf_MOD_nf90_put_var_2d_fourbytereal'
+glide_io.F90:(.text+0xc003): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xc312): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xc370): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xc67f): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xc6dd): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xcaef): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xcb4d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xce62): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xcec0): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xd1cf): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xd22d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xd53c): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xd59a): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xd808): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xd867): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xdb76): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xdbd4): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xdd18): undefined reference to `__netcdf_MOD_nf90_put_var_2d_fourbyteint'
+glide_io.F90:(.text+0xdd62): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xe071): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xe0cf): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xe3e4): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xe442): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xe773): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xe7d1): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xeae6): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xeb44): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xee53): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xeeb1): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xf23d): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xf2b6): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xf5cb): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xf629): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xf95a): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xf9b8): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0xfccd): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0xfd2b): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x100b7): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x10130): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x104ba): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+glide_io.F90:(.text+0x10533): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x108bd): undefined reference to `__netcdf_MOD_nf90_put_var_2d_eightbytereal'
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_create':
+glide_io.F90:(.text+0x1098e): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x109ba): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10a2a): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x10a56): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10aa0): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10b18): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x10b44): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10bb0): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x10bdc): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10c55): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x10c81): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x10cee): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glide_io.F90:(.text+0x10d1a): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glide_io.F90:(.text+0x113af): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x11405): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1143b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11471): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x114a7): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x115e1): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x11637): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1166d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x117a7): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x117fd): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11833): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11869): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x119a3): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x119f9): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11a2f): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11a65): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11b9f): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x11bf5): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11c2b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11c61): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11d9b): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x11df1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11e27): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11e5d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x11eb5): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x120cb): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x12121): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12157): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1218d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x121c3): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12212): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1226a): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x12480): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x124d6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1250c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12542): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12578): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x125ae): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+libglide.a(glide_io.o):glide_io.F90:(.text+0x125fd): more undefined references to `__netcdf_MOD_nf90_put_att_text' follow
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_create':
+glide_io.F90:(.text+0x12655): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1286b): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x128c1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x128f7): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1292d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12963): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12999): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+libglide.a(glide_io.o):glide_io.F90:(.text+0x129e8): more undefined references to `__netcdf_MOD_nf90_put_att_text' follow
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_create':
+glide_io.F90:(.text+0x12a40): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x12c56): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x12cac): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12ce2): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12d18): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12d67): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x12dbf): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x12fd5): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1302b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13061): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13097): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x130cd): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1311c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13174): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1338a): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x133e0): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13416): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1344c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13482): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x134b8): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+libglide.a(glide_io.o):glide_io.F90:(.text+0x13507): more undefined references to `__netcdf_MOD_nf90_put_att_text' follow
+libglide.a(glide_io.o): In function `__glide_io_MOD_glide_io_create':
+glide_io.F90:(.text+0x1355f): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x13775): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x137cb): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13801): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13837): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1386d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x138bc): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13914): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x13b2a): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x13b80): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13bb6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13c05): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13c5d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x13e73): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x13ec9): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13eff): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13f35): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13f84): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x13fdc): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x141f2): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x14248): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1427e): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x142b4): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14303): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1435b): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x14571): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x145c7): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x145fd): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1464c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x146a4): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x148ba): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x14910): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14946): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1497c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x149cb): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14a23): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x14c1e): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x14c74): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14caa): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14ce0): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14d2f): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x14d87): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x14faa): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x15000): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15036): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1506c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x150bb): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15113): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1530e): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x15364): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1539a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x153e9): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15441): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1563c): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x15692): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x156c8): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15717): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1576f): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x15985): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x159db): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15a11): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15a47): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15a96): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15aee): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x15d11): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x15d67): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15d9d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15dd3): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15e22): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x15e7a): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x16090): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x160e6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1611c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16152): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x161a1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x161f9): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1640f): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x16465): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1649b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x164d1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16520): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16578): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1678e): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x167e4): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1681a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16850): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1689f): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x168f7): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x16b0d): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x16b63): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16b99): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16bcf): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16c05): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16c54): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16cac): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x16ec2): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x16f18): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16f4e): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16f9d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x16ff5): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1720b): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x17261): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17297): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x172e6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1733e): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x17554): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x175aa): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x175e0): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1762f): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17687): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x178aa): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x17900): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17936): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1796c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x179a2): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x179f1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17a49): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x17c5f): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x17cb5): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17ceb): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17d21): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17d57): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17da6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x17dfe): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x18014): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1806a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x180a0): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x180d6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18125): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1817d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x18393): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x183e9): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1841f): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18455): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1848b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x184da): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18532): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x18748): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1879e): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x187d4): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1880a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18859): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x188b1): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x18ac7): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x18b1d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18b53): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18b89): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18bbf): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18c0e): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18c66): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x18e7c): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x18ed2): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18f08): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18f57): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x18faf): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x191c5): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1921b): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19251): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19287): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x192bd): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1930c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19364): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x19587): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x195dd): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19613): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19649): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19698): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x196f0): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x19906): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1995c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19992): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x199c8): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19a17): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19a6f): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x19c85): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x19cdb): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19d11): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19d47): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19d7d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19dcc): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x19e24): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1a03a): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1a090): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a0c6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a115): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a16d): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1a390): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1a3e6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a41c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a452): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a4a1): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a4f9): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1a71c): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1a772): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a7a8): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a7de): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a82d): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1a885): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_io.F90:(.text+0x1aaa8): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glide_io.F90:(.text+0x1aafe): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1ab34): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1ab6a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1aba0): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glide_io.F90:(.text+0x1abef): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+libglide.a(glide_nc_custom.o): In function `__glide_nc_custom_MOD_glide_nc_filldvars':
+glide_nc_custom.F90:(.text+0x51): undefined reference to `__netcdf_MOD_nf90_enddef'
+glide_nc_custom.F90:(.text+0xab): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x1f5): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_nc_custom.F90:(.text+0x254): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x391): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_nc_custom.F90:(.text+0x3f0): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x529): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_nc_custom.F90:(.text+0x588): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x6cb): undefined reference to `__netcdf_MOD_nf90_put_var_eightbytereal'
+glide_nc_custom.F90:(.text+0x72a): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x771): undefined reference to `__netcdf_MOD_nf90_put_var_1d_eightbytereal'
+glide_nc_custom.F90:(.text+0x7d0): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glide_nc_custom.F90:(.text+0x817): undefined reference to `__netcdf_MOD_nf90_put_var_1d_eightbytereal'
+libglimmer.a(glimmer_ncdf.o): In function `__glimmer_ncdf_MOD_delete_input':
+glimmer_ncdf.F90:(.text+0xe63): undefined reference to `__netcdf_MOD_nf90_close'
+libglimmer.a(glimmer_ncdf.o): In function `__glimmer_ncdf_MOD_delete_output':
+glimmer_ncdf.F90:(.text+0x10cc): undefined reference to `__netcdf_MOD_nf90_close'
+libglimmer.a(glimmer_ncdf.o): In function `nc_errorhandle_':
+glimmer_ncdf.F90:(.text+0x13b6): undefined reference to `__netcdf_MOD_nf90_strerror'
+libglimmer.a(glimmer_ncio.o): In function `__glimmer_ncio_MOD_glimmer_nc_openfile':
+glimmer_ncio.F90:(.text+0x3d6): undefined reference to `__netcdf_MOD_nf90_open'
+glimmer_ncio.F90:(.text+0x56b): undefined reference to `__netcdf_MOD_nf90_strerror'
+glimmer_ncio.F90:(.text+0x88a): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0x8e1): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0x940): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0xaae): undefined reference to `__netcdf_MOD_nf90_get_var_1d_fourbyteint'
+glimmer_ncio.F90:(.text+0xaf2): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0xb4a): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0xe0f): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0xeba): undefined reference to `__netcdf_MOD_nf90_get_var_1d_fourbytereal'
+glimmer_ncio.F90:(.text+0x11f9): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0x1251): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0x1458): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0x1503): undefined reference to `__netcdf_MOD_nf90_get_var_1d_fourbytereal'
+glimmer_ncio.F90:(.text+0x1842): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0x189a): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0x1b64): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0x1c0f): undefined reference to `__netcdf_MOD_nf90_get_var_1d_fourbytereal'
+glimmer_ncio.F90:(.text+0x1f4e): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0x1fa6): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0x2282): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0x232d): undefined reference to `__netcdf_MOD_nf90_get_var_1d_fourbytereal'
+libglimmer.a(glimmer_ncio.o): In function `__glimmer_ncio_MOD_glimmer_nc_checkwrite':
+glimmer_ncio.F90:(.text+0x2778): undefined reference to `__netcdf_MOD_nf90_enddef'
+glimmer_ncio.F90:(.text+0x2823): undefined reference to `__netcdf_MOD_nf90_sync'
+glimmer_ncio.F90:(.text+0x2c2e): undefined reference to `__netcdf_MOD_nf90_put_var_fourbytereal'
+libglimmer.a(glimmer_ncio.o): In function `__glimmer_ncio_MOD_glimmer_nc_createfile':
+glimmer_ncio.F90:(.text+0x2ce6): undefined reference to `__netcdf_MOD_nf90_create'
+glimmer_ncio.F90:(.text+0x31b6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x324a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x32fc): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x33ae): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x3460): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+libglimmer.a(glimmer_ncio.o):glimmer_ncio.F90:(.text+0x3512): more undefined references to `__netcdf_MOD_nf90_put_att_text' follow
+libglimmer.a(glimmer_ncio.o): In function `__glimmer_ncio_MOD_glimmer_nc_createfile':
+glimmer_ncio.F90:(.text+0x36f4): undefined reference to `__netcdf_MOD_nf90_def_dim'
+glimmer_ncio.F90:(.text+0x384d): undefined reference to `__netcdf_MOD_nf90_def_var_manydims'
+glimmer_ncio.F90:(.text+0x38b3): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x38f6): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x3939): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x397c): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_ncio.F90:(.text+0x39cc): undefined reference to `__netcdf_MOD_nf90_def_var_scalar'
+libglimmer.a(glimmer_ncio.o): In function `__glimmer_ncio_MOD_glimmer_nc_openappend':
+glimmer_ncio.F90:(.text+0x3aaf): undefined reference to `__netcdf_MOD_nf90_open'
+glimmer_ncio.F90:(.text+0x3ca7): undefined reference to `__netcdf_MOD_nf90_inq_dimid'
+glimmer_ncio.F90:(.text+0x3d05): undefined reference to `__netcdf_MOD_nf90_inquire_dimension'
+glimmer_ncio.F90:(.text+0x3eed): undefined reference to `__netcdf_MOD_nf90_inq_varid'
+glimmer_ncio.F90:(.text+0x3f2c): undefined reference to `__netcdf_MOD_nf90_redef'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_put_lcc':
+glimmer_map_CFproj.F90:(.text+0x3a): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_map_CFproj.F90:(.text+0x89): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xd8): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x127): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x176): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x1f1): undefined reference to `__netcdf_MOD_nf90_put_att_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_put_aea':
+glimmer_map_CFproj.F90:(.text+0x259): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_map_CFproj.F90:(.text+0x2a8): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x2f7): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x346): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x395): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x410): undefined reference to `__netcdf_MOD_nf90_put_att_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_put_laea':
+glimmer_map_CFproj.F90:(.text+0x478): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_map_CFproj.F90:(.text+0x4c7): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x516): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x564): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x5b3): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_put_stere':
+glimmer_map_CFproj.F90:(.text+0x629): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_map_CFproj.F90:(.text+0x657): undefined reference to `__netcdf_MOD_nf90_put_att_text'
+glimmer_map_CFproj.F90:(.text+0x6a6): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x6f5): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x751): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x781): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x7d0): undefined reference to `__netcdf_MOD_nf90_put_att_one_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o):glimmer_map_CFproj.F90:(.text+0x845): more undefined references to `__netcdf_MOD_nf90_put_att_one_eightbytereal' follow
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_lcc':
+glimmer_map_CFproj.F90:(.text+0x928): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x974): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x9c0): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xa0c): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xa84): undefined reference to `__netcdf_MOD_nf90_get_att_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_aea':
+glimmer_map_CFproj.F90:(.text+0xb09): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xb55): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xba1): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xbed): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xc65): undefined reference to `__netcdf_MOD_nf90_get_att_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_laea':
+glimmer_map_CFproj.F90:(.text+0xcea): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xd36): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xd81): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0xdcd): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_stere_polar':
+glimmer_map_CFproj.F90:(.text+0xece): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o):glimmer_map_CFproj.F90:(.text+0xf20): more undefined references to `__netcdf_MOD_nf90_get_att_one_eightbytereal' follow
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_stere_polar':
+glimmer_map_CFproj.F90:(.text+0x1087): undefined reference to `__netcdf_MOD_nf90_get_att_one_fourbytereal'
+glimmer_map_CFproj.F90:(.text+0x10d0): undefined reference to `__netcdf_MOD_nf90_get_att_one_fourbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_cfproj_get_stere':
+glimmer_map_CFproj.F90:(.text+0x121e): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x1270): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x12c1): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x1313): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+glimmer_map_CFproj.F90:(.text+0x1365): undefined reference to `__netcdf_MOD_nf90_get_att_one_eightbytereal'
+libglimmer.a(glimmer_map_CFproj.o): In function `__glimmer_map_cfproj_MOD_glimmap_cfgetproj':
+glimmer_map_CFproj.F90:(.text+0x157d): undefined reference to `__netcdf_MOD_nf90_inquire'
+glimmer_map_CFproj.F90:(.text+0x160f): undefined reference to `__netcdf_MOD_nf90_inquire_variable'
+glimmer_map_CFproj.F90:(.text+0x1656): undefined reference to `__netcdf_MOD_nf90_inq_attname'
+glimmer_map_CFproj.F90:(.text+0x1700): undefined reference to `__netcdf_MOD_nf90_get_att_text'
+collect2: ld returned 1 exit status
+make[5]: *** [simple_glide] Error 1
+make[5]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+make[4]: *** [all-recursive] Error 1
+make[4]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+make[3]: *** [all] Error 2
+make[3]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src/fortran'
+make[2]: *** [all-recursive] Error 1
+make[2]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14/src'
+make[1]: *** [all-recursive] Error 1
+make[1]: Leaving directory `/home/mecury/glimmer/glimmer-1.0.14'
+make: *** [all] Error 2
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000018.html">[Glimmer-cism-user] compile GLIMMER on ubuntu
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#19">[ date ]</a>
+              <a href="thread.html#19">[ thread ]</a>
+              <a href="subject.html#19">[ subject ]</a>
+              <a href="author.html#19">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

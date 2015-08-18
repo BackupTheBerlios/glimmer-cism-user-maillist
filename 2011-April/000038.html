@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%09cluster&In-Reply-To=%3CBANLkTikhQ0CFO%3D2i22xiHpbRXmLGQ2s7gw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000037.html">
+   <LINK REL="Next"  HREF="000039.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster</H1>
+    <B>Florence Colleoni</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%09cluster&In-Reply-To=%3CBANLkTikhQ0CFO%3D2i22xiHpbRXmLGQ2s7gw%40mail.gmail.com%3E"
+       TITLE="[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster">flocolleoni at gmail.com
+       </A><BR>
+    <I>Wed Apr  6 15:52:59 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000037.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+        <LI>Next message: <A HREF="000039.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you Kate!
+
+
+I am trying to compile and find the right option on my system..still does
+not work...
+But I am not completely done ;-)
+
+Flo
+
+2011/4/6 Evans, Kate J. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">evanskj at ornl.gov</A>&gt;
+
+&gt;<i> Hi Flo-
+</I>&gt;<i>
+</I>&gt;<i> The version of Glimmer you are using has a configure that doesn&#8217;t allow for
+</I>&gt;<i> some of AIX&#8217;s specific needs out of the box.  Its not seeing the
+</I>&gt;<i> &#8211;DHAVE_CONFIG. All the &#8211;D options need to have a &#8211;WF,-C!  In front. Same
+</I>&gt;<i> deal with the other error message you sent. Here is my install script for a
+</I>&gt;<i> different AIX machine with a different version of Glimmer you can play with:
+</I>&gt;<i>
+</I>&gt;<i> FC=&quot;mpxlf90_r -O2 -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+</I>&gt;<i> F90=&quot;mpxlf90_r -O2 -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+</I>&gt;<i> F77=&quot;mpxlf_r -O2  -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+</I>&gt;<i> CC=&quot;mpcc_r -O2 -qcpluscmt&quot; \
+</I>&gt;<i> CXX=&quot;mpCC_r -O2&quot; \
+</I>&gt;<i> LIBS=&quot;-lC_r&quot; \
+</I>&gt;<i> --with-netcdf=/contrib/netcdf-3.6.2 \
+</I>&gt;<i> --with-lapack=-lessl \
+</I>&gt;<i> --with-blas=-lblas  \
+</I>&gt;<i>
+</I>&gt;<i> Kate Evans
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 4/6/11 4:58 AM, &quot;Florence Colleoni&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> Hi Magi,
+</I>&gt;<i>
+</I>&gt;<i> ok but then I have another error I think linked to the syntax in C module
+</I>&gt;<i> config.inc. I don't know what to do.
+</I>&gt;<i> It seems that xlf95 does not recognize /* symbols, and the cc compilor does
+</I>&gt;<i> not understand # symbol:
+</I>&gt;<i>
+</I>&gt;<i> libtool: compile:  xlf95 -DHAVE_CONFIG_H -I. -I.. -I
+</I>&gt;<i> /usr/local/netcdf-3.6.3/include -c glimmer_commandline.F90  -o
+</I>&gt;<i> .libs/glimmer_commandline.o
+</I>&gt;<i> &quot;../config.inc&quot;, line 1.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 2.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 4.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 5.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i>
+</I>&gt;<i> How can I correct for it?
+</I>&gt;<i>
+</I>&gt;<i> Flo
+</I>&gt;<i>
+</I>&gt;<i> 2011/4/6 Magnus Hagdorn &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Magnus.Hagdorn at ed.ac.uk</A>&gt;
+</I>&gt;<i> Florence Colleoni wrote:
+</I>&gt;<i> Dear all,
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ============================================================================
+</I>&gt;<i>   ERROR!
+</I>&gt;<i>   You probably have to install the development version of the Python
+</I>&gt;<i> package
+</I>&gt;<i>   for your distribution.  The exact name of this package varies among them.
+</I>&gt;<i>
+</I>&gt;<i>  ============================================================================
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Strangely I compiled it with out any problems on Mac OS X 10.5.8 with
+</I>&gt;<i> gfortran,
+</I>&gt;<i> gcc 4.0.1 and python 2.5.1...
+</I>&gt;<i>
+</I>&gt;<i> Did somebody already face similar problems?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Flo,
+</I>&gt;<i> this sounds like you really are missing the python development parts. If
+</I>&gt;<i> you just want to run the model and don't need the plotting functionality,
+</I>&gt;<i> you can build without python, i.e.
+</I>&gt;<i> ./configure --disable-python
+</I>&gt;<i> magi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+-- 
+*&quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la R&#233;volution
+avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres veulent la
+R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+Chateaubriand*
+......................................................................
+Florence Colleoni
+CMCC &lt;<A HREF="http://www.cmcc.it">http://www.cmcc.it</A>&gt;
+Viale Aldo Moro, 44
+40127 Bologna - Italy
+
+     Phone: +39 051 3782622
+     Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+     URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+......................................................................
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/4d76849e/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/4d76849e/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000037.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+	<LI>Next message: <A HREF="000039.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#38">[ date ]</a>
+              <a href="thread.html#38">[ thread ]</a>
+              <a href="subject.html#38">[ subject ]</a>
+              <a href="author.html#38">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

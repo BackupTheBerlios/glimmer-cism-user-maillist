@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glide_mask: problem detecting ice margin
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glide_mask%3A%20problem%20detecting%20ice%20margin&In-Reply-To=%3C4C494FB4.1040006%40ed.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glide_mask: problem detecting ice margin</H1>
+    <B>Magnus Hagdorn</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glide_mask%3A%20problem%20detecting%20ice%20margin&In-Reply-To=%3C4C494FB4.1040006%40ed.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] glide_mask: problem detecting ice margin">Magnus.Hagdorn at ed.ac.uk
+       </A><BR>
+    <I>Fri Jul 23 10:15:48 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000012.html">[Glimmer-cism-user] glide_mask: problem detecting ice margin
+</A></li>
+        <LI>Next message: <A HREF="000014.html">[Glimmer-cism-user] Simple question regarding the output	interpretation:
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Oliver Elison Timm wrote:
+&gt;<i> Aloha Magnus,
+</I>&gt;<i> 
+</I>&gt;<i> I should have known better. I should have waited with the 'bug'-report. 
+</I>&gt;<i> After careful checking of my input data file, I found that the minimum 
+</I>&gt;<i> ice thickness was actually set to 0.01. 
+</I>
+ah well, so you start the model with some initial ice thickness?
+
+
+&gt;<i> However, from past experiences I 
+</I>&gt;<i> know that a statement  of a real variable &gt; 0.0 can be cause trouble...
+</I>&gt;<i> 
+</I>
+in many cases you can get a way with &gt; or &lt; checks (the one big 
+exception where you don't and which is a total pain anyway is 
+computational geometry). the really big problem is checking for equality 
+which should always be abs(a)&lt;epsilon.
+
+&gt;<i> Sorry for causing some unnecessary alarming emails.
+</I>&gt;<i> 
+</I>
+not to worry. i was kind of surprised that it worked for me and not you.
+
+
+&gt;<i> I'll be more careful in future...
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>i keep telling myself that - rarely works ;-)
+
+magi
+
+
+-- 
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000012.html">[Glimmer-cism-user] glide_mask: problem detecting ice margin
+</A></li>
+	<LI>Next message: <A HREF="000014.html">[Glimmer-cism-user] Simple question regarding the output	interpretation:
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

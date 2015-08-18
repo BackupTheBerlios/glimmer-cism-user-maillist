@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] GLIMMER
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20GLIMMER&In-Reply-To=%3C4C471087.1020404%40ed.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000008.html">
+   <LINK REL="Next"  HREF="000007.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] GLIMMER</H1>
+    <B>Magnus Hagdorn</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20GLIMMER&In-Reply-To=%3C4C471087.1020404%40ed.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] GLIMMER">Magnus.Hagdorn at ed.ac.uk
+       </A><BR>
+    <I>Wed Jul 21 17:21:43 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000008.html">[Glimmer-cism-user] GLIMMER
+</A></li>
+        <LI>Next message: <A HREF="000007.html">[Glimmer-cism-user] mailing lists (and general BerliOS usage)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Lauren Gregoire wrote:
+&gt;<i> Hi Oliver,
+</I>&gt;<i> 
+</I>&gt;<i> I can confirm the problem with the marine_margin=4 option, I had some 
+</I>&gt;<i> funny results with it. I use the option marine_margin=2.
+</I>&gt;<i> 
+</I>Hi Lauren and Oliver,
+I had a look at what the marine_margin=4 option does and it seems to 
+work. It might not get rid of enough ice. Can you be a bit more specific 
+of what you expect to happen? If you output the thkmask in a netCDF file 
+and have a look at the values you might glean some further information. 
+The flag values are or'ed together and can be any of
+
+   integer, parameter :: glide_mask_ocean          = -2
+   integer, parameter :: glide_mask_land           = -1
+   integer, parameter :: glide_mask_boundary       = 0
+   integer, parameter :: glide_mask_thin_ice       = 1
+   integer, parameter :: glide_mask_interior       = 2
+   integer, parameter :: glide_mask_shelf          = 4
+   integer, parameter :: glide_mask_stream         = 8
+   integer, parameter :: glide_mask_grounding_line = 16
+   integer, parameter :: glide_mask_stream_margin  = 32
+   integer, parameter :: glide_mask_land_margin    = 64
+   integer, parameter :: glide_mask_shelf_front    = 128
+   integer, parameter :: glide_mask_marine_edge    = 256
+
+
+(from glide_mask).
+
+
+Cheers
+magi
+
+-- 
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000008.html">[Glimmer-cism-user] GLIMMER
+</A></li>
+	<LI>Next message: <A HREF="000007.html">[Glimmer-cism-user] mailing lists (and general BerliOS usage)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#9">[ date ]</a>
+              <a href="thread.html#9">[ thread ]</a>
+              <a href="subject.html#9">[ subject ]</a>
+              <a href="author.html#9">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

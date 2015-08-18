@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Segmentation fault error while using	glimmer at 2km resolution
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-March/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Segmentation%20fault%20error%20while%20using%0A%09glimmer%20at%202km%20resolution&In-Reply-To=%3C1300136190.4d7e80fe6330d%40webmail.mun.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000028.html">
+   <LINK REL="Next"  HREF="000030.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Segmentation fault error while using	glimmer at 2km resolution</H1>
+    <B>kevin.lemorzadec at mun.ca</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Segmentation%20fault%20error%20while%20using%0A%09glimmer%20at%202km%20resolution&In-Reply-To=%3C1300136190.4d7e80fe6330d%40webmail.mun.ca%3E"
+       TITLE="[Glimmer-cism-user] Segmentation fault error while using	glimmer at 2km resolution">kevin.lemorzadec at mun.ca
+       </A><BR>
+    <I>Mon Mar 14 21:56:30 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000028.html">[Glimmer-cism-user] Segmentation fault error while using glimmer at 2km resolution
+</A></li>
+        <LI>Next message: <A HREF="000030.html">[Glimmer-cism-user] Segmentation fault error while using	glimmer at 2km resolution
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I don't think that the total number of point is a problem in my case. 
+I run the same grid but with the resolution between two point (dew and dns)
+equal to 20 km instead of 2 km and it works find with a resolution equal to
+20km.
+
+I tried to track the problem and I get the following message :
+
+At line 149 of file glimmer_searchcircle.F90
+Fortran runtime error: Array reference out of bounds for array 'sc_initdata',
+upper bound of dimension 1 exceeded (143 &gt; 142)
+
+I don't really know how can I fixed that. Any ideas?
+
+Kevin         
+
+
+Quoting Florence Colleoni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>&gt;:
+
+&gt;<i> Dear all,
+</I>&gt;<i> 
+</I>&gt;<i> I think that I have a similar problem with the Northern Hemisphere grid I
+</I>&gt;<i> created.
+</I>&gt;<i> I mean, I think the problem reside in the total number of points the model
+</I>&gt;<i> is able to deal
+</I>&gt;<i> with, especially for downscaling. More presicely, Kevin performed an
+</I>&gt;<i> increased resolution
+</I>&gt;<i> grid, including much more points than in the glimmer-test glide and
+</I>&gt;<i> glint-example grids.
+</I>&gt;<i> My Northern Hemisphere grid also have much more points.
+</I>&gt;<i> 
+</I>&gt;<i> Is there a specific threshold that have been imposed somewhere?
+</I>&gt;<i> 
+</I>&gt;<i> Flo
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 2011/3/11 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">kevin.lemorzadec at mun.ca</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hi Ian,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks for your quick answer. Unfortunately, I still have the same problem
+</I>&gt;<i> &gt; with
+</I>&gt;<i> &gt; the 1.0.18 version
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I have created my configuration file from the glimmer-tests-1.2 examples.
+</I>&gt;<i> I
+</I>&gt;<i> &gt; have
+</I>&gt;<i> &gt; attached my file.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Kevin
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Quoting Ian Rutt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">I.C.Rutt at swansea.ac.uk</A>&gt;:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Hi Kevin,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; It's not made clear on the website, unfortunately, but 1.7.0 is a beta
+</I>&gt;<i> &gt; &gt; (preview) release, and is expected to contain some bugs. The other
+</I>&gt;<i> &gt; &gt; release which is available (1.0.18) is a 'production' release, and
+</I>&gt;<i> &gt; &gt; should be better. Could you try your runs with 1.0.18 and let us know
+</I>&gt;<i> &gt; &gt; how you get on?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Best wishes,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Ian
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; On 11/03/11 11:39, <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">kevin.lemorzadec at mun.ca</A> wrote:
+</I>&gt;<i> &gt; &gt; &gt; Hi Ian,
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; I am using glimmer-1.7.0
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Cheers,
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Kevin
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Quoting Ian Rutt&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">I.C.Rutt at swansea.ac.uk</A>&gt;:
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  Hi Kevin,
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  Which version are you using?
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  Cheers,
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  Ian
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  On 10/03/2011 17:18, <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">kevin.lemorzadec at mun.ca</A> wrote:
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Dear Glimmer users,
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  I am trying to run glimmer at low resolution and obtain a
+</I>&gt;<i> &gt; &gt; Segmentation
+</I>&gt;<i> &gt; &gt; &gt;&gt;  fault
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  error message when I try to run it a 2km.
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Everything works find when I am running it at 20km resolution.
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Would someone have an idea of where could that come from?
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Thanks,
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Kevin Le Morzadec -   Ph.D. candidate
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;                         Dept of Physics and Physical Oceanography,
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;                         Memorial University of Newfoundland,
+</I>&gt;<i> Canada
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;                         Tel 709-864-8654
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  Glimmer-cism-user mailing list
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; &gt;&gt;  &gt;  <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>&gt;<i> &gt; &gt; &gt;&gt;  _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt;&gt;  Glimmer-cism-user mailing list
+</I>&gt;<i> &gt; &gt; &gt;&gt;  <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;<i> &gt; &gt; &gt;&gt;  <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>&gt;<i> &gt; &gt; &gt;&gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; --
+</I>&gt;<i> &gt; &gt; Dr Ian Rutt
+</I>&gt;<i> &gt; &gt; School of the Environment and Society
+</I>&gt;<i> &gt; &gt; Swansea University
+</I>&gt;<i> &gt; &gt; Singleton Park
+</I>&gt;<i> &gt; &gt; Swansea
+</I>&gt;<i> &gt; &gt; SA2 8PP
+</I>&gt;<i> &gt; &gt; Tel. (01792) 602685
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">i.c.rutt at swansea.ac.uk</A>
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Glimmer-cism-user mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> *&quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la R&#233;volution
+</I>&gt;<i> avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres veulent la
+</I>&gt;<i> R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+</I>&gt;<i> Chateaubriand*
+</I>&gt;<i> ......................................................................
+</I>&gt;<i> Florence Colleoni
+</I>&gt;<i> CMCC &lt;<A HREF="http://www.cmcc.it">http://www.cmcc.it</A>&gt;
+</I>&gt;<i> Viale Aldo Moro, 44
+</I>&gt;<i> 40127 Bologna - Italy
+</I>&gt;<i> 
+</I>&gt;<i>      Phone: +39 051 3782622
+</I>&gt;<i>      Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+</I>&gt;<i>      URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+</I>&gt;<i> ......................................................................
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000028.html">[Glimmer-cism-user] Segmentation fault error while using glimmer at 2km resolution
+</A></li>
+	<LI>Next message: <A HREF="000030.html">[Glimmer-cism-user] Segmentation fault error while using	glimmer at 2km resolution
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Problems with GLINT regridding
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20GLINT%20regridding&In-Reply-To=%3C1330654355.2355.10.camel%40dirk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000063.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Problems with GLINT regridding</H1>
+    <B>Bob Fischer</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20GLINT%20regridding&In-Reply-To=%3C1330654355.2355.10.camel%40dirk%3E"
+       TITLE="[Glimmer-cism-user] Problems with GLINT regridding">rpf2116 at columbia.edu
+       </A><BR>
+    <I>Fri Mar  2 03:12:35 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000063.html">[Glimmer-cism-user] Problems with GLINT regridding
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>My problem turned out to be... I had the lats() array was in INCREASING
+order, rather than DECREASING order.  I fixed that up, and everything
+worked like a charm.
+
+I would suggest the following diff to make this issue a little more
+user-friendly.
+
+-- Bpb
+
+bash-3.2$ svn diff
+Index: glint_interp.F90
+===================================================================
+--- glint_interp.F90	(revision 1267)
++++ glint_interp.F90	(working copy)
+@@ -1148,11 +1148,10 @@
+           enddo
+ 
+           jj=1
+-
+           do
+              ups%gboxy(i,j)=jj
+              if (jj&gt;gny) then
+-                call write_log('global index
+failure',GM_FATAL,__FILE__,__LINE__)
++                call write_log('global index failure, lats must be in
+DESCENDING order!',GM_FATAL,__FILE__,__LINE__)
+              endif
+              if ((ggrid%lat_bound(jj)&gt;=plat).and.(plat&gt;ggrid%
+lat_bound(jj+1))) exit
+              jj=jj+1
+
+
+On Thu, 2012-03-01 at 17:46 -0500, Bob Fischer wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I'm trying out the GLINT regridding.  For this, I have a test program.
+</I>&gt;<i> I start with a sample function defined on our GCM's grid (see
+</I>&gt;<i> gval.nc).  In the test program (regrid.F90), I set up a local grid,
+</I>&gt;<i> the global grid, and a projection between the two.  And then I try
+</I>&gt;<i> calling interp_to_local().
+</I>&gt;<i> 
+</I>&gt;<i> Unfortunately, the results are obviously wrong.  The values I'm
+</I>&gt;<i> getting on the local grid are out of bounds of the original input
+</I>&gt;<i> values on the global grid (!).
+</I>&gt;<i> 
+</I>&gt;<i> Does anyone have any ideas on what might be going on?  Sample source
+</I>&gt;<i> and input file are included with this message.  (In regrid.F90, look
+</I>&gt;<i> starting where it says &quot;START READING HERE&quot;).
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> -- Bob
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Glimmer-cism-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/6182e6bd/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/6182e6bd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000063.html">[Glimmer-cism-user] Problems with GLINT regridding
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

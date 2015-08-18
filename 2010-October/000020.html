@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] RCM and glimmer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20RCM%20and%20glimmer&In-Reply-To=%3C4CC841AE.5070501%40swansea.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000021.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] RCM and glimmer</H1>
+    <B>Ian Rutt</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20RCM%20and%20glimmer&In-Reply-To=%3C4CC841AE.5070501%40swansea.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] RCM and glimmer">I.C.Rutt at swansea.ac.uk
+       </A><BR>
+    <I>Wed Oct 27 17:13:50 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000021.html">[Glimmer-cism-user] Compiling Glimmer v. 1.7.0 using gfortran on	Mac OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Jonny,
+
+I'm coping this answer to the Glimmer-CISM user mailing list: I would 
+suggest using this in future, as it means you can draw on a much larger 
+range of expertise.
+
+I'm afraid that GLINT hasn't been improved to deal with rotated grids at 
+this point - I think it would be a rather big job!
+
+As for forcing Glimmer with data on the correct grid, you would probably 
+be best to look at the EIS test example in the glimmer-tests release:
+
+<A HREF="https://developer.berlios.de/project/showfiles.php?group_id=10995&amp;release_id=16552">https://developer.berlios.de/project/showfiles.php?group_id=10995&amp;release_id=16552</A>
+
+This forces a fennoscandian run with a parameterized climate, but it 
+could be easily adapted to use one prescribed from file. So, you'd be 
+using GLIDE directly, rather than through GLINT.
+
+Hope that helps,
+
+Ian
+
+Dr Ian Rutt
+School of the Environment and Society
+Swansea University
+Singleton Park
+Swansea
+SA2 8PP
+Tel. (01792) 602685
+<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">i.c.rutt at swansea.ac.uk</A>
+
+
+On 26/10/10 16:09, Jonathan Day wrote:
+&gt;<i> Hi Ian,
+</I>&gt;<i> I want to run the daily pdd scheme (only) in glimmer for Greenland with 
+</I>&gt;<i> data from HadRM3. This is on a rotated pole 'lat long grid'. At last 
+</I>&gt;<i> years British Branch meeting we spoke about GLINT and you told me that 
+</I>&gt;<i> there was no options in GLINT to transform from rotated pole RCM grids 
+</I>&gt;<i> prior to forcing glimmer. Is this still the case?
+</I>&gt;<i> 
+</I>&gt;<i> If so I could transform my data onto the same polar stereographic grid 
+</I>&gt;<i> as the gland20.input.nc &lt;<A HREF="http://gland20.input.nc">http://gland20.input.nc</A>&gt; grid prior to forcing 
+</I>&gt;<i> glimmer. How would you recommend running glimmer in this setup where the 
+</I>&gt;<i> input climate data is on the right grid already and do you have a driver 
+</I>&gt;<i> that does this?
+</I>&gt;<i> 
+</I>&gt;<i> Best wishes
+</I>&gt;<i> Jonny      
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> ----------------------
+</I>&gt;<i> Jonathan Day,
+</I>&gt;<i> PhD Student,
+</I>&gt;<i> School of Geographical Sciences,
+</I>&gt;<i> University of Bristol,
+</I>&gt;<i> University Road,
+</I>&gt;<i> Bristol,
+</I>&gt;<i> BS8 1SS
+</I>&gt;<i> 
+</I>&gt;<i> Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">jonathan.day at bris.ac.uk</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">jonathan.day at bris.ac.uk</A>&gt;
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000021.html">[Glimmer-cism-user] Compiling Glimmer v. 1.7.0 using gfortran on	Mac OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

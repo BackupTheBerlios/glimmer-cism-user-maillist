@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] GLIMMER
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20GLIMMER&In-Reply-To=%3C4C3D89E3.8090508%40ed.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] GLIMMER</H1>
+    <B>Magnus Hagdorn</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20GLIMMER&In-Reply-To=%3C4C3D89E3.8090508%40ed.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] GLIMMER">Magnus.Hagdorn at ed.ac.uk
+       </A><BR>
+    <I>Wed Jul 14 11:56:51 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000006.html">[Glimmer-cism-user] GLIMMER
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Oliver,
+welcome to Glimmer-CISM
+:<i>-)
+</I>
+first of all and to get some administrivia I would strongly suggest to 
+subscribe to the user and maybe the developer mailing lists. You will 
+reach a much larger audience by sending questions to the mailing lists.
+
+Secondly, which version of GLIMMER and now Glimmer-CISM are you using? 
+Glimmer has recently moved to
+<A HREF="http://developer.berlios.de/projects/glimmer-cism/">http://developer.berlios.de/projects/glimmer-cism/</A>
+and we are in the process of releasing version 1.6.
+
+Oliver Elison Timm wrote:
+&gt;<i> Dear Magnus Hagdorn:
+</I>&gt;<i> 
+</I>&gt;<i> first of all let me express my how thankful I'm to you and your team 
+</I>&gt;<i> that had the vision of creating a community ice-sheet model!
+</I>&gt;<i> 
+</I>well, I should point out that it's now a rather large group of active 
+developers of Glimmer-CISM so I really cannot claim sole responsibility :-)
+
+&gt;<i> I'm currently working an coupling between GLIMMER and LOVECLIM, and I'm 
+</I>&gt;<i> in right now focusing my attention to the climate forcing using 
+</I>&gt;<i> LOVECLIM's preindustrial control run and just recently LGM climate 
+</I>&gt;<i> anomalies.
+</I>&gt;<i> 
+</I>that's very interesting, will you make your code available? We already 
+have a number of climate model couplers and would certainly be happy to 
+add another one as add on.
+
+
+&gt;<i> Your documentation is very good and so far I could - even as a beginner 
+</I>&gt;<i> in ice-sheet modeling - understand and solve most of my initial problems.
+</I>&gt;<i> 
+</I>excellent! That's very nice to hear.
+
+
+&gt;<i> However, right now I have two specific questions and maybe you have some 
+</I>&gt;<i> quick advice for me:
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I want to use the marine_margin=4  option with the marine-limit=-200
+</I>&gt;<i> for the Northern Hemisphere (30-90N in a coarse crude projection)
+</I>&gt;<i> and try to create LGM ice-sheets over the Hudson Bay area.
+</I>&gt;<i> However, the marine_margin does not seem to work as I understood it.
+</I>&gt;<i> 
+</I>&gt;<i> Ice grows into regions where the bedrock (topg) is below -200m, too.
+</I>&gt;<i> 
+</I>&gt;<i> What configuration is best to simulate ice-sheets with a marine_margin 
+</I>&gt;<i> limit of -200m.
+</I>&gt;<i> 
+</I>
+Calving is certainly one of the darker corners of Glimmer-CISM.
+
+Ice is only calved through the marine margin. Option 4 removes all ice 
+on a marginal node below a certain depth. If it doesn't do it then it's 
+a bug :-(. Is there a large area of ice below your marine limit?
+
+Option 2 might work better since that removes all ice below certain depth.
+
+&gt;<i> 
+</I>&gt;<i> What assumptions do ice-sheet modelers use for the balance/ relaxation 
+</I>&gt;<i> of the present-day bedrock topography. I simply 'ingnored' the fact that 
+</I>&gt;<i> some regions are not in equilibrium. Are there reference maps available 
+</I>&gt;<i> how the equilibrium bedrock topography would look like for present day 
+</I>&gt;<i> ice-sheets (globally). What initial states do ice-sheet modelers use for 
+</I>&gt;<i> present-day ice-sheet simulations.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>this is somewhat tricky, because the isostatic adjustment depends on the 
+  ice history. I guess you could use a global loading history, e.g. Dick 
+Peltier's ICE-5g to initialise the isostatic module. This would be quite 
+a good addition to GC (any volunteers?). For my predictive runs (using a 
+predecessor of Glimmer) I started the runs in the past and continued 
+into the future. Again, you have the problem of what initial topography 
+to use. However, if your simulated present day topo resembles the actual 
+present day topo you can have some confidence that you are not too far off.
+
+
+&gt;<i> Do you have references where I can find more about the performance of 
+</I>&gt;<i> GLIMMER for present day ice-sheet simulations, and LGM or Eemian?
+</I>&gt;<i> 
+</I>We should really have a list of Glimmer-CISM publications. 
+Unfortunately, we currently don't have one and I have been away from GC 
+for a while, so I will leave this question to others to answer.
+
+Again, welcome to Glimmer-CISM. And again, I would strongly encourage 
+you to subscribe to the mailing lists and get involved in GC development.
+
+Cheers
+magnus
+
+
+
+-- 
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000006.html">[Glimmer-cism-user] GLIMMER
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

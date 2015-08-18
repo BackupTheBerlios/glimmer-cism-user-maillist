@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%20cluster&In-Reply-To=%3CC9C1C30A.8279%25evanskj%40ornl.gov%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster</H1>
+    <B>Evans, Kate J.</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%20cluster&In-Reply-To=%3CC9C1C30A.8279%25evanskj%40ornl.gov%3E"
+       TITLE="[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster">evanskj at ornl.gov
+       </A><BR>
+    <I>Wed Apr  6 13:13:14 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000036.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+        <LI>Next message: <A HREF="000038.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Flo-
+
+The version of Glimmer you are using has a configure that doesn&#8217;t allow for some of AIX&#8217;s specific needs out of the box.  Its not seeing the &#8211;DHAVE_CONFIG. All the &#8211;D options need to have a &#8211;WF,-C!  In front. Same deal with the other error message you sent. Here is my install script for a different AIX machine with a different version of Glimmer you can play with:
+
+FC=&quot;mpxlf90_r -O2 -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+F90=&quot;mpxlf90_r -O2 -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+F77=&quot;mpxlf_r -O2  -qsuffix=cpp=F90 -qalias_size=107374182 -WF,-C!&quot; \
+CC=&quot;mpcc_r -O2 -qcpluscmt&quot; \
+CXX=&quot;mpCC_r -O2&quot; \
+LIBS=&quot;-lC_r&quot; \
+--with-netcdf=/contrib/netcdf-3.6.2 \
+--with-lapack=-lessl \
+--with-blas=-lblas  \
+
+Kate Evans
+
+
+
+On 4/6/11 4:58 AM, &quot;Florence Colleoni&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>&gt; wrote:
+
+Hi Magi,
+
+ok but then I have another error I think linked to the syntax in C module config.inc. I don't know what to do.
+It seems that xlf95 does not recognize /* symbols, and the cc compilor does not understand # symbol:
+
+libtool: compile:  xlf95 -DHAVE_CONFIG_H -I. -I.. -I /usr/local/netcdf-3.6.3/include -c glimmer_commandline.F90  -o .libs/glimmer_commandline.o
+&quot;../config.inc&quot;, line 1.1: 1515-019 (S) Syntax is incorrect.
+&quot;../config.inc&quot;, line 2.1: 1515-019 (S) Syntax is incorrect.
+&quot;../config.inc&quot;, line 4.1: 1515-019 (S) Syntax is incorrect.
+&quot;../config.inc&quot;, line 5.1: 1515-019 (S) Syntax is incorrect.
+
+How can I correct for it?
+
+Flo
+
+2011/4/6 Magnus Hagdorn &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Magnus.Hagdorn at ed.ac.uk</A>&gt;
+Florence Colleoni wrote:
+Dear all,
+
+============================================================================
+   ERROR!
+   You probably have to install the development version of the Python package
+   for your distribution.  The exact name of this package varies among them.
+  ============================================================================
+
+
+Strangely I compiled it with out any problems on Mac OS X 10.5.8 with gfortran,
+gcc 4.0.1 and python 2.5.1...
+
+Did somebody already face similar problems?
+
+
+
+Hi Flo,
+this sounds like you really are missing the python development parts. If you just want to run the model and don't need the plotting functionality, you can build without python, i.e.
+./configure --disable-python
+magi
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000036.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+	<LI>Next message: <A HREF="000038.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

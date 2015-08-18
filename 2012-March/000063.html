@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Problems with GLINT regridding
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20GLINT%20regridding&In-Reply-To=%3C1330642013.2355.8.camel%40dirk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000064.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Problems with GLINT regridding</H1>
+    <B>Bob Fischer</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20GLINT%20regridding&In-Reply-To=%3C1330642013.2355.8.camel%40dirk%3E"
+       TITLE="[Glimmer-cism-user] Problems with GLINT regridding">rpf2116 at columbia.edu
+       </A><BR>
+    <I>Thu Mar  1 23:46:53 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000064.html">[Glimmer-cism-user] Problems with GLINT regridding
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I'm trying out the GLINT regridding.  For this, I have a test program.
+I start with a sample function defined on our GCM's grid (see gval.nc).
+In the test program (regrid.F90), I set up a local grid, the global
+grid, and a projection between the two.  And then I try calling
+interp_to_local().
+
+Unfortunately, the results are obviously wrong.  The values I'm getting
+on the local grid are out of bounds of the original input values on the
+global grid (!).
+
+Does anyone have any ideas on what might be going on?  Sample source and
+input file are included with this message.  (In regrid.F90, look
+starting where it says &quot;START READING HERE&quot;).
+
+Thanks,
+-- Bob
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/7e8778ea/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/7e8778ea/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: regrid.tar.gz
+Type: application/x-compressed-tar
+Size: 17090 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/7e8778ea/attachment.bin">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20120301/7e8778ea/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000064.html">[Glimmer-cism-user] Problems with GLINT regridding
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

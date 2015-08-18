@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Compiling Glimmer v. 1.7.0 using gfortran on	Mac OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Compiling%20Glimmer%20v.%201.7.0%20using%20gfortran%20on%0A%09Mac%20OS%20X&In-Reply-To=%3C4CC9898F.5030706%40marum.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000020.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Compiling Glimmer v. 1.7.0 using gfortran on	Mac OS X</H1>
+    <B>Andre Paul</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Compiling%20Glimmer%20v.%201.7.0%20using%20gfortran%20on%0A%09Mac%20OS%20X&In-Reply-To=%3C4CC9898F.5030706%40marum.de%3E"
+       TITLE="[Glimmer-cism-user] Compiling Glimmer v. 1.7.0 using gfortran on	Mac OS X">apaul at marum.de
+       </A><BR>
+    <I>Thu Oct 28 16:32:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000020.html">[Glimmer-cism-user] RCM and glimmer
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everybody,
+
+In an attempt to run the North America example &quot;namerica20&quot; with Glimmer 
+v. 1.7.0 using gfortran on Mac OS X, I had to fix three problems. I 
+would be very happy if somebody could comment on these problems, on 
+whether they are real, and how to go beyond my temporary fixes, 
+especially regarding the grounding line computation.
+
+Also, has anybody tried to (re-) tune the PDD factors for the Greenland 
+or North America examples?
+
+(1) For compiling Glimmer v. 1.7.0 with &quot;gfortran&quot;, apparently lines 256 
+and 393 in file &quot;glimmer_anomcouple.F90&quot; are too long and must be 
+continued using the &quot;&amp;&quot; symbol.
+
+The new lines read, respectively:
+call write_log(&quot;Anomaly coupling: time axes in climate files do not 
+agree&quot;, &amp;
+          GM_FATAL,__FILE__,__LINE__)
+
+call write_log(&quot;Anomaly coupling: Problem indexing time-slices&quot;, &amp;
+           GM_FATAL,__FILE__,__LINE__)
+(note that these lines are not properly displayed in this email)
+
+(2) Running the North America example &quot;namerica20&quot; with Glimmer v. 1.7.0 
+compiled using gfortran on Mac OS X produced a &quot;segmentation fault&quot;.
+
+To locate the problem, the code was compiled code using gfortran debug 
+options:
+../configure --prefix=$HOME/Installs/glimmer-1.7.0
+--with-netcdf=$HOME/Installs/netcdf-4.1.1 FC=gfortran F77=gfortran
+FCFLAGS=&quot;-g -Wall -pedantic -fbounds-check&quot; FFFLAGS=&quot;-g -Wall -pedantic
+-fbounds-check&quot;
+
+This gave the following error message:
+&quot;At line 271 of file ../../../src/fortran/glide_ground.F90
+Fortran runtime error: Array bound mismatch, size mismatch for
+dimension 1 of array 'gline_flux' (350/349)&quot;
+
+Array &quot;gline_flux&quot; is actually allocated in &quot;glide_types.F90&quot; as follows:
+allocate (model%ground%gline_flux(ewn,nsn))
+
+The following arrays are allocated in &quot;glide_types.F90&quot; on the &quot;velo&quot; grid:
+call coordsystem_allocate(model%general%velo_grid,model%geomderv%stagthck)
+call
+coordsystem_allocate(model%general%velo_grid,upn,model%velocity%surfvel)
+call coordsystem_allocate(model%general%velo_grid, model%velocity%ubas)
+call coordsystem_allocate(model%general%velo_grid, model%velocity%vbas)
+(note that these lines are not properly displayed in this email)
+
+Accordingly, simple print statements in &quot;glide_ground.F90&quot; yielded the 
+following array sizes:
+   size(gline_flux) =          351 ,         271
+   size(stagthk)    =          350 ,         270
+   size(surfvel)    =           11 ,         350 ,         270
+   size(ubas)       =          350 ,         270
+   size(vbas)       =          350 ,         270
+
+To fix the size mismatch
+- in &quot;glide_types.F90&quot;, allocated grounding line flux on &quot;velo&quot; grid, as
+    this grid is apparently used in &quot;calc_gline_flux&quot;:
+    allocate (model%ground%gline_flux(ewn-1,nsn-1))
+- in &quot;glide_ground.F90&quot;, subroutine &quot;calc_gline_flux&quot;, restriced size
+    of grounding line mask to 1:ewn-1, 1:nsn-1:
+    where (GLIDE_IS_GROUNDING_LINE(mask(1:ewn-1,1:nsn-1)))
+
+Note that this last change may be a temporary fix only, because the 
+grounding line mask should probably be mapped from the &quot;ice&quot; to the 
+&quot;velo&quot; grid, am I right?
+
+Another problem I did not get into: The grounding line is identified by 
+an integer value of 16, but GLIDE_IS_GROUNDING_LINE apparently checks 
+for an integer value of 17.
+
+(3) After fixing the above problem, the model still crashed with a
+segmentation fault. Running it in the &quot;gdb&quot; debugger gave:
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_PROTECTION_FAILURE at address: 0x00007fff5f3fffa8
+0x00000001003df524 in __glimmer_routing_MOD_q_sort_index () at
+../../../src/fortran/glimmer_routing.F90:287
+287	  recursive subroutine q_sort_index(numbers,index,left,right)
+
+The only easy way to prevent calling the internal subroutines &quot;indexx&quot; 
+and &quot;q_sort_index&quot; in &quot;glimmer_routing.F90&quot; was to take out the optional 
+argument  &quot;water_out=fw&quot; in the call to &quot;glint&quot; from 
+&quot;glint_example.F90&quot;. This of course is also a temporary fix only.
+
+Eventually, I could get around these technical problems and run the 
+North America example (except for a warning &quot;getting lock: Invalid 
+argument&quot; right at the end of the run).
+
+Any comments or suggestions are welcome.
+
+Please find attached the modified source files.
+
+With kind regards,
+
+Andr&#233;
+
+-- 
+
+
+Dr. Andr&#233; Paul
+MARUM - Center for Marine Environmental Sciences
+and Department of Geosciences
+University of Bremen
+PO Box 33 04 40
+D-28334 Bremen
+Germany
+
+E-Mail: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">apaul at marum.de</A>
+<A HREF="http://www.geo.uni-bremen.de/~apau">http://www.geo.uni-bremen.de/~apau</A>
+Tel.:   +49 (0) 421 218 65450
+Fax:    +49 (0) 421 218 65454
+
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: glimmer_anomcouple.F90
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment.ksh">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: glide_types.F90
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0001.ksh">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0001.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: glide_ground.F90
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0002.ksh">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0002.ksh</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: glint_example.F90
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0003.ksh">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20101028/78e40074/attachment-0003.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000020.html">[Glimmer-cism-user] RCM and glimmer
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#21">[ date ]</a>
+              <a href="thread.html#21">[ thread ]</a>
+              <a href="subject.html#21">[ subject ]</a>
+              <a href="author.html#21">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

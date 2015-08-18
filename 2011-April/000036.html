@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%09cluster&In-Reply-To=%3CBANLkTinQrBCCYyRC2jOq3PEEGqO0PuxADA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000035.html">
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster</H1>
+    <B>Florence Colleoni</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%0A%09cluster&In-Reply-To=%3CBANLkTinQrBCCYyRC2jOq3PEEGqO0PuxADA%40mail.gmail.com%3E"
+       TITLE="[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster">flocolleoni at gmail.com
+       </A><BR>
+    <I>Wed Apr  6 10:59:04 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000035.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+        <LI>Next message: <A HREF="000037.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I also have an other compiling option nto recognize:
+
+glimmer_vers.F90&quot;, 1520-031 (W) Option DLINES is ignored within Fortran 90
+free form and IBM free form.
+
+Flo
+
+2011/4/6 Florence Colleoni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>&gt;
+
+&gt;<i> Hi Magi,
+</I>&gt;<i>
+</I>&gt;<i> ok but then I have another error I think linked to the syntax in C module
+</I>&gt;<i> config.inc. I don't know what to do.
+</I>&gt;<i> It seems that xlf95 does not recognize /* symbols, and the cc compilor does
+</I>&gt;<i> not understand # symbol:
+</I>&gt;<i>
+</I>&gt;<i> libtool: compile:  xlf95 -DHAVE_CONFIG_H -I. -I.. -I
+</I>&gt;<i> /usr/local/netcdf-3.6.3/include -c glimmer_commandline.F90  -o
+</I>&gt;<i> .libs/glimmer_commandline.o
+</I>&gt;<i> &quot;../config.inc&quot;, line 1.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 2.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 4.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i> &quot;../config.inc&quot;, line 5.1: 1515-019 (S) Syntax is incorrect.
+</I>&gt;<i>
+</I>&gt;<i> How can I correct for it?
+</I>&gt;<i>
+</I>&gt;<i> Flo
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 2011/4/6 Magnus Hagdorn &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Magnus.Hagdorn at ed.ac.uk</A>&gt;
+</I>&gt;<i>
+</I>&gt;&gt;<i> Florence Colleoni wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Dear all,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ============================================================================
+</I>&gt;&gt;&gt;<i>   ERROR!
+</I>&gt;&gt;&gt;<i>   You probably have to install the development version of the Python
+</I>&gt;&gt;&gt;<i> package
+</I>&gt;&gt;&gt;<i>   for your distribution.  The exact name of this package varies among
+</I>&gt;&gt;&gt;<i> them.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>  ============================================================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Strangely I compiled it with out any problems on Mac OS X 10.5.8 with
+</I>&gt;&gt;&gt;<i> gfortran,
+</I>&gt;&gt;&gt;<i> gcc 4.0.1 and python 2.5.1...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Did somebody already face similar problems?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i> Hi Flo,
+</I>&gt;&gt;<i> this sounds like you really are missing the python development parts. If
+</I>&gt;&gt;<i> you just want to run the model and don't need the plotting functionality,
+</I>&gt;&gt;<i> you can build without python, i.e.
+</I>&gt;&gt;<i> ./configure --disable-python
+</I>&gt;&gt;<i> magi
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> --
+</I>&gt;&gt;<i> The University of Edinburgh is a charitable body, registered in
+</I>&gt;&gt;<i> Scotland, with registration number SC005336.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Glimmer-cism-user mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> *&quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la
+</I>&gt;<i> R&#233;volution avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres veulent
+</I>&gt;<i> la R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+</I>&gt;<i> Chateaubriand*
+</I>&gt;<i> ......................................................................
+</I>&gt;<i> Florence Colleoni
+</I>&gt;<i> CMCC &lt;<A HREF="http://www.cmcc.it">http://www.cmcc.it</A>&gt;
+</I>&gt;<i> Viale Aldo Moro, 44
+</I>&gt;<i> 40127 Bologna - Italy
+</I>&gt;<i>
+</I>&gt;<i>      Phone: +39 051 3782622
+</I>&gt;<i>      Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+</I>&gt;<i>      URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+</I>&gt;<i> ......................................................................
+</I>&gt;<i>
+</I>
+
+
+-- 
+*&quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la R&#233;volution
+avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres veulent la
+R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+Chateaubriand*
+......................................................................
+Florence Colleoni
+CMCC &lt;<A HREF="http://www.cmcc.it">http://www.cmcc.it</A>&gt;
+Viale Aldo Moro, 44
+40127 Bologna - Italy
+
+     Phone: +39 051 3782622
+     Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+     URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+......................................................................
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/0c6676fa/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/0c6676fa/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000035.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM	cluster
+</A></li>
+	<LI>Next message: <A HREF="000037.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

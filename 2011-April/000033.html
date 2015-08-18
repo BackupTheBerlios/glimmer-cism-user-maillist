@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%20cluster&In-Reply-To=%3CBANLkTi%3DU5BnRTtn1OvN_--2T7dgE4Kp8xg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000034.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster</H1>
+    <B>Florence Colleoni</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer-cism2%3A%20python%20problem%20on%20AIX%20IBM%20cluster&In-Reply-To=%3CBANLkTi%3DU5BnRTtn1OvN_--2T7dgE4Kp8xg%40mail.gmail.com%3E"
+       TITLE="[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster">flocolleoni at gmail.com
+       </A><BR>
+    <I>Wed Apr  6 09:33:58 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000034.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear all,
+
+I have been trying to compile glimmer-cism2 on two different supercomputing
+platforms with AIX 5.3.
+But each time it fails due to a check in python modules consitency...
+I am trying to compile using the IBM compiler and python 2.5...I get this
+error:
+
+
+checking if we should build python bindings... yes
+checking for python... /usr/bin/python
+checking for a version of Python &gt;= '2.1.0'... yes
+checking for a version of Python &gt;= '2.3'... yes
+checking for the distutils Python package... yes
+checking for Python include path... -I/opt/freeware/include/python2.3
+checking for Python library path... -L/opt/freeware/lib -lpython2.3
+checking for Python site-packages path...
+/opt/freeware/lib/python2.3/site-packages
+checking python extra libraries...  -ldl -lC
+checking python extra linking flags... -Wl,-bE:Modules/python.exp -lld
+checking consistency of all components of python development environment...
+no
+configure: error:
+  Could not link test program to Python. Maybe the main Python library has
+been
+  installed in some non-standard library path. If so, pass it to configure,
+  via the LDFLAGS environment variable.
+  Example: ./configure LDFLAGS=&quot;-L/usr/non-standard-path/python/lib&quot;
+
+============================================================================
+   ERROR!
+   You probably have to install the development version of the Python
+package
+   for your distribution.  The exact name of this package varies among them.
+
+============================================================================
+
+
+Strangely I compiled it with out any problems on Mac OS X 10.5.8 with
+gfortran,
+gcc 4.0.1 and python 2.5.1...
+
+Did somebody already face similar problems?
+
+Cheers
+
+Flo
+
+-- 
+*&quot;Il existe deux sortes de r&#233;volutionnaires; les uns d&#233;sirent la R&#233;volution
+avec la Libert&#233;: c'est le tr&#232;s petit nombre; les autres veulent la
+R&#233;volution avec le Pouvoir: c'est l'immense majorit&#233;.&quot;
+Chateaubriand*
+......................................................................
+Florence Colleoni
+CMCC &lt;<A HREF="http://www.cmcc.it">http://www.cmcc.it</A>&gt;
+Viale Aldo Moro, 44
+40127 Bologna - Italy
+
+     Phone: +39 051 3782622
+     Email: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">flocolleoni at gmail.com</A>
+     URL: <A HREF="http://flocolleoni.org">http://flocolleoni.org</A>
+......................................................................
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/4eae3b3d/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110406/4eae3b3d/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000034.html">[Glimmer-cism-user] glimmer-cism2: python problem on AIX IBM cluster
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#33">[ date ]</a>
+              <a href="thread.html#33">[ thread ]</a>
+              <a href="subject.html#33">[ subject ]</a>
+              <a href="author.html#33">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

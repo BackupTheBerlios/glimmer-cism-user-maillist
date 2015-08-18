@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Help! Spin up glimmer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Help%21%20Spin%20up%20glimmer&In-Reply-To=%3C4DB86800.000028.03888%40LENOVO-60ED4DA9%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000041.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Help! Spin up glimmer</H1>
+    <B>qingyan</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Help%21%20Spin%20up%20glimmer&In-Reply-To=%3C4DB86800.000028.03888%40LENOVO-60ED4DA9%3E"
+       TITLE="[Glimmer-cism-user] Help! Spin up glimmer">qing.yan at nersc.no
+       </A><BR>
+    <I>Wed Apr 27 21:01:21 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000041.html">[Glimmer-cism-user] Help! spin up glimmer
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All
+ 
+I  tried the initialization for Greenland and Antarctic. I did  everything
+following the web page(<A HREF="http://websrv.cs.umt.edu/Isis/index">http://websrv.cs.umt.edu/Isis/index</A>
+php/Configuration_Files). However the results were unreasonable, and
+differed with the results in the web page . 
+ 
+The forcing dara are the 120000-year (-120000---0BP) temeprature, surface
+mass balance and sea level change.
+ 
+In Antarctic the ice volume kept increasing in the 120000-year run. There
+was no oscillation like the glacial-interglacial circle. And in 120000
+(model time equivalent to preindustrial?), the ice area was too large.
+ 
+In Greenland the precipitation was always zero, same as ice volume and ice
+area, except the first time step.
+ 
+ 
+The model used is glimmer-1.7.0. I compiled it as follows: /configure
+--prefix=/home/nersc/yanq/glimmer-1.7.0  --with-netcdf=/opt/Cray/netcdf/4.1
+1.0/netcdf-pgi FC=pgf90 F77=pgf90
+ 
+I am wondering if anyone could give me some suggestions. Thank you very
+much! 
+ 
+Regards
+ 
+Qing
+ 
+ 
+PS: config.file-Greenland ( Antarctic config flie is similar)
+ 
+[SPIN MB]
+Model_type = 1
+Use_simple = 0
+Oxygen_isotope_file = GRIP120kyr_oisotopes_glimmer_friendly.data
+ 
+[SPIN Temperature]
+Temp_file = GRIP120kyr_temps_glimmer_friendly.data
+Model_type = 2
+Use_simple = 0
+ 
+[SPIN Elevation Correction]
+Ele_file = elecor_grip.data
+ 
+[SPIN SLC]
+Slc_file = specmap_120kyr_glimmer_friendly.data
+ 
+[grid]
+Ewn = 101
+Nsn = 187
+Upn = 11
+Dew = 15000
+DNS = 15000
+ 
+[sigma]
+Sigma_levels = 0.00 0.15 0.30 0.45 0.60 0.75 0.83 0.90 0.95 0.98 1.00
+ 
+[options]
+Temperature = 1
+Flow_law = 0
+Marine_margin = 4
+Slip_coeff = 5
+Evolution = 0
+Basal_water = 2
+Vertical_integration = 0
+Topo_is_relaxed = 2
+Hotstart = 0
+Sliding_constant = 6d-5
+ 
+[isostasy]
+Lithosphere=1
+Asthenosphere=1
+Relaxed_tau=3000.0
+ 
+[GTHF]
+ 
+[time]
+Tend = 120000
+DT = 1.0
+Ntem = 1.
+Nvel = .1
+ 
+[parameters]
+Flow_factor = 1.0
+Marine_limit = 0.0
+Ice_limit= 100.0
+ 
+[CF default]
+Title: Greenland
+Comment: Greenland initialization
+ 
+[CF output]
+Name: spin15kmGreen_output.NC
+Frequency:1000
+Variables: thk bmlt btemp temp thkmask surfvel acab diffu artm usurf topg
+relx flwa prcp bheatflx ivol iarea btrc ubas vbas taux tauy
+ 
+[CF output]
+Name: greenland15km_hot.NC
+Frequency: 20000
+Variables: hot Lon
+ 
+[CF input]
+Name: ./Greenland_15km_v0.8.NC
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment.html">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image21.gif
+Type: image/gif
+Size: 4425 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment.gif">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment.gif</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: imstp_animation_butterflies_en_020908.gif
+Type: image/gif
+Size: 31851 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment-0001.gif">https://lists.berlios.de/pipermail/glimmer-cism-user/attachments/20110427/5465e10c/attachment-0001.gif</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000041.html">[Glimmer-cism-user] Help! spin up glimmer
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

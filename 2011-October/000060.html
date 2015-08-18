@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Problems with staglevel?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2011-October/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20staglevel%3F&In-Reply-To=%3C4E897407.6060402%40ed.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000061.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Problems with staglevel?</H1>
+    <B>Magnus Hagdorn</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Problems%20with%20staglevel%3F&In-Reply-To=%3C4E897407.6060402%40ed.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] Problems with staglevel?">Magnus.Hagdorn at ed.ac.uk
+       </A><BR>
+    <I>Mon Oct  3 10:36:23 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000061.html">[Glimmer-cism-user] Degrees east?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bob wrote:
+&gt;<i> I'm running Glimmer via GLINT.  Unfortunately, it's failing:
+</I>&gt;<i> 
+</I>&gt;<i>   * FATAL ERROR : (glide_nc_custom.F90:132) NetCDF: Variable not found
+</I>&gt;<i> 
+</I>&gt;<i> The relevant code is in:
+</I>&gt;<i> 
+</I>&gt;<i> subroutine glide_nc_filldvars(outfile,model)
+</I>&gt;<i>     .....
+</I>&gt;<i>     !*sfp* added for HO stress fields, which are staggered in the vertical
+</I>&gt;<i>     status = nf90_inq_varid(NCO%id,'*staglevel*',varid)
+</I>&gt;<i>     status=nf90_put_var(NCO%id,varid,model%numerics%stagsigma)
+</I>&gt;<i>     call nc_errorhandle(__FILE__,__LINE__,status)
+</I>&gt;<i> 
+</I>&gt;<i> (This is code that writes to a netCDF file).  It looks like the variable 
+</I>&gt;<i> 'staglevel' was not created when the netCDF file was first opened.  But 
+</I>&gt;<i> I receive at least three reports in my logfile that this variable WAS 
+</I>&gt;<i> created:
+</I>&gt;<i> 
+</I>&gt;<i>    Creating variable staglevel
+</I>&gt;<i> 
+</I>&gt;<i> This is happening inside a really simple call to initialise_glint():
+</I>&gt;<i> 
+</I>&gt;<i>     call initialise_glint(glint_greenland, &amp;
+</I>&gt;<i>         lats, lons, time_step, &amp;
+</I>&gt;<i>         (/glide_configfile_name/))
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Any ideas of what's going on or how to fix it?
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>
+Hi Bob,
+which repo/branch are you using?
+magi
+
+-- 
+The University of Edinburgh is a charitable body, registered in
+Scotland, with registration number SC005336.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000061.html">[Glimmer-cism-user] Degrees east?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

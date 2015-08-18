@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] glimmer configuration
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer%20configuration&In-Reply-To=%3C4BA10985.3050503%40swansea.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000003.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] glimmer configuration</H1>
+    <B>Ian Rutt</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20glimmer%20configuration&In-Reply-To=%3C4BA10985.3050503%40swansea.ac.uk%3E"
+       TITLE="[Glimmer-cism-user] glimmer configuration">I.C.Rutt at swansea.ac.uk
+       </A><BR>
+    <I>Wed Mar 17 17:55:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000003.html">[Glimmer-cism-user] glimmer configuration
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Dear Aleksandr,
+
+&gt;<i> 1) Does time step adjust automatically when spatial resolution
+</I>&gt;<i> changes? And vice versa - does changing cell sizes have an influence
+</I>&gt;<i> on temporal resolution? I ask this because they are supposed to be
+</I>&gt;<i> related with each other via transport equations.
+</I>
+You will need to set the timestep and spatial resolution separately: 
+they do not automatically adjust in response to one another. Given the 
+non-linear nature of the dynamics (in contrast to, say, linear 
+advection), the timestep/resolution criteria for convergence/stability 
+are not simple.
+
+&gt;<i> 2) If I remember correctly, when in the process of coupling glimmer to
+</I>&gt;<i> climate model by means of glint, one should make the following call:
+</I>&gt;<i> call glint(ice_sheet,time,temp,precip,orog)
+</I>&gt;<i> What is meant by orography? Does this quantity include ice topography
+</I>&gt;<i> or is it just bed elevation?
+</I>
+orog is the global topography which is consistent with the global 
+forcing data (i.e. that seen by the climate model, or used in the 
+generation of reanalysis data, or whatever you're using). It does 
+include ice thickness.
+
+Best wishes,
+
+Ian
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000003.html">[Glimmer-cism-user] glimmer configuration
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#4">[ date ]</a>
+              <a href="thread.html#4">[ thread ]</a>
+              <a href="subject.html#4">[ subject ]</a>
+              <a href="author.html#4">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>

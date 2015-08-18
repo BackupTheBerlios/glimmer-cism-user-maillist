@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Glimmer-cism-user] Simple question regarding the output	interpretation:
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/glimmer-cism-user/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Simple%20question%20regarding%20the%20output%0A%09interpretation%3A&In-Reply-To=%3C61B99DC5-420C-4E9D-AA97-714E654DF669%40lanl.gov%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Glimmer-cism-user] Simple question regarding the output	interpretation:</H1>
+    <B>William Lipscomb</B> 
+    <A HREF="mailto:glimmer-cism-user%40lists.berlios.de?Subject=Re%3A%20%5BGlimmer-cism-user%5D%20Simple%20question%20regarding%20the%20output%0A%09interpretation%3A&In-Reply-To=%3C61B99DC5-420C-4E9D-AA97-714E654DF669%40lanl.gov%3E"
+       TITLE="[Glimmer-cism-user] Simple question regarding the output	interpretation:">lipscomb at lanl.gov
+       </A><BR>
+    <I>Tue Jul 27 21:31:57 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Glimmer-cism-user] Simple question regarding the output	interpretation:
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Glimmer-cism-user] Simple question regarding the output interpretation:
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Oliver,
+
+You shouldn't see thickness changes that big on the first timestep.   
+It might be a scaling problem.  The ice thickness in glimmer is scaled  
+by a factor of thk0 = 2000, so if you have acab = 0.5 m/yr and  
+something is scaled incorrectly, you could see a 1000-m change in  
+thickness.  (I look forward to when those scaling factors are gone.)
+
+However, when I build and run the most recent version (revision 1882)  
+of the glimmer-cism2 trunk, then do a one-year glint_example run, I  
+don't see large thickness changes or any other evidence of scaling  
+errors.  The max difference between year 1 and the initial field is  
+~30 m.  I've pasted my config files below--you can see if there are  
+any major differences with yours.
+
+Regards,
+
+Bill
+
+
+On Jul 26, 2010, at 3:26 PM, Oliver Elison Timm wrote:
+
+&gt;<i> Quick question: I've installed glimmer version 1.7.0 and started the  
+</I>&gt;<i> glint_example run for Greenland. I changed the output frequency to 1a:
+</I>&gt;<i> To my surprise the variable thk changes from one output timestep to  
+</I>&gt;<i> the next by more than 1000m at the SE margin and by about -200m in  
+</I>&gt;<i> the central regions.
+</I>&gt;<i> However, ACAB shows  values of the order 1m/a in SE Greenland and  
+</I>&gt;<i> 0.1 m/a in Northern Greenland.
+</I>&gt;<i>
+</I>&gt;<i> How do I interpret the changes in the ice-thickness. Is the key the  
+</I>&gt;<i> interpretation of the output time step (gland20.1a.nc)
+</I>&gt;<i>
+</I>&gt;<i> NOTE: I use the default gland20.config in which
+</I>&gt;<i> [GLINT CLIMATE] has no ice_step_multiply defined neither  
+</I>&gt;<i> mbal_accum_time
+</I>&gt;<i>
+</I>&gt;<i> Thanks for any feedback helping to clarify the interpretation of the  
+</I>&gt;<i> changes in the ice thickness.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Oliver
+</I>&gt;<i> &lt;timm.vcf&gt;_______________________________________________
+</I>&gt;<i> Glimmer-cism-user mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">Glimmer-cism-user at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">https://lists.berlios.de/mailman/listinfo/glimmer-cism-user</A>
+</I>
+*******************
+climate config file:
+
+[GLEX climate]
+days_in_year=360
+total_years=1
+climate_tstep=6
+diurnal_cycle=0.0
+
+[GLEX precip]
+filename: ncep-doe_6h_climate.64x32.nc
+variable: prcp
+
+[GLEX temps]
+filename: ncep-doe_6h_climate.64x32.nc
+variable: temp2m
+kelvin: .false.
+
+[GLEX orog]
+filename: orog.igcmgrid.64x32.nc
+variable: topg
+
+********************
+GLIDE config file:
+
+[grid]
+ewn = 76
+nsn = 141
+upn = 11
+
+[sigma]
+sigma_levels: 0.00 0.10 0.20 0.30 0.40 0.50 0.60 0.70 0.80 0.90 1.00
+
+[GLINT climate]
+precip_mode = 1
+acab_mode = 1
+
+[projection]
+type = STERE
+centre_longitude = 321.0
+centre_latitude = 90.0
+false_easting = 800000.0
+false_northing = 3400000.0
+standard_parallel = 71.0
+
+[options]
+temperature = 1
+flow_law = 1
+basal_water = 2
+marine_margin = 1
+slip_coeff = 0
+evolution = 2
+vertical_integration = 0
+hotstart = 0
+
+[time]
+dt = 1.
+ntem = 1.
+nvel = 1.
+niso = 1.
+ndiag = 1
+
+[parameters]
+log_level=6
+ice_limit = 100.
+marine_limit = -200.
+geothermal = -5.e-2
+flow_factor = 3
+hydro_time = 1000.
+isos_time = 3000.
+basal_tract = 2 10 10 0 1
+
+########################################
+# I/O configuration follows
+########################################
+
+[CF default]
+title: GLINT example test run
+institution: Glimmer Inst
+references:  some reference
+comment: results from the simple test run
+
+[CF output]
+name:      gland20.100a.nc
+frequency: 100
+variables: thk topg ablt_spot acab_spot diffu_spot temp_spot
+numspot:   4
+spotx:     40 10 60 20
+spoty:     70 10 30 100
+comment:   spots are taken at nodes
+
+[CF output]
+name:      gland20.1a.nc
+frequency: 1
+variables: global_orog local_orog acab thk usurf snowd siced arng
+
+[GLINT output]
+name: gland20.1a.glint.nc
+frequency: 1
+variables: instant_prcp instant_acab instant_ablt instant_artm
+
+[CF output]
+name:      gland20.hot.nc
+frequency: 5
+variables: hot
+xtype:     double
+
+[CF input]
+name: gland20.input.nc
+
+
+*******************************************************************************
+William H. Lipscomb					E-mail: <A HREF="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">lipscomb at lanl.gov</A>
+Los Alamos National Laboratory		Phone: (505) 667-0395
+Group T-3, Mail Stop B216			Fax: (505) 665-5926
+Los Alamos, NM 87545
+*******************************************************************************
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Glimmer-cism-user] Simple question regarding the output	interpretation:
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Glimmer-cism-user] Simple question regarding the output interpretation:
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/glimmer-cism-user">More information about the Glimmer-cism-user
+mailing list</a><br>
+</body></html>
